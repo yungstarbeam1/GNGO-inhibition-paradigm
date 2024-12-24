@@ -1,4 +1,4 @@
-The following includes The settings in the scrpit and where to change them:
+The following includes the settings in the scrpit and where to change them:
 
 Display:
     - Set to 800x600 pixels
