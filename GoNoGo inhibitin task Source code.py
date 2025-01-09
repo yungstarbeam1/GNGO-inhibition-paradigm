@@ -1,4 +1,4 @@
-import pygame, random, time, os, xlsxwriter, scipy
+import pygame, random, time, os, xlsxwriter
 from datetime import datetime
 
 pygame.init()
@@ -48,8 +48,8 @@ def show_start_screen():
 def get_trial_count():
     global TOTAL_TRIALS
     screen.fill((0, 0, 0))
-    font = pygame.font.Font(None, 50)
-    text = font.render('Enter # of Trials:', True, (255, 255, 255))
+    font = pygame.font.Font(None, 40)
+    text = font.render('Enter # of Trials, Press Enter To confirm: ', True, (255, 255, 255))
     screen.blit(text, (100, 250))
     pygame.display.flip()
 
@@ -104,10 +104,13 @@ def run_experiment():
     stim_order = random.choices(images, k=TOTAL_TRIALS)
     
     for stimulus in stim_order:
-        # Start with ISI before displaying each image
+        # Start with ISI before displaying each image, Test Starts with ISI too, does that matter? Who Am I to know
         screen.fill((0, 0, 0))  # Clear screen for ISI
         pygame.display.flip()
         time.sleep(ISI_TIME)
+        
+        # Clear the event que to clear leftover inputs, there has to be a better way to do this
+        pygame.event.clear()
         
         screen.blit(loaded_images[stimulus], (350, 250))
         pygame.display.flip()
@@ -122,7 +125,8 @@ def run_experiment():
                     return
                 
                 if event.type == pygame.KEYDOWN and not hit:
-                    hit = True
+                    hit = True  # Marks that a hit has occurred, 
+                    #In the end screen Its only to 4 sig digs but in the sheets its WAYYYY more accurate!
                     reaction_time = (time.time() - start_time) * 1000  # Convert to milliseconds
                     total_hit_times.append(reaction_time)
                     total_hits += 1
@@ -131,13 +135,13 @@ def run_experiment():
                         total_no_go_hits += 1
                         no_go_hit_times.append(reaction_time)
         
-        screen.fill((0, 0, 0))  # Clear screen after displaying image
+        screen.fill((0, 0, 0))  # Clear screen again
         pygame.display.flip()
 
     # Add ISI after the last display
-    time.sleep(ISI_TIME)    
+    time.sleep(ISI_TIME)
 
-# This calculates the average for time
+# This calculates the average for time for hits
 def avg():
     avg_hit_time = sum(total_hit_times) / len(total_hit_times) if total_hit_times else 0
     avg_no_go_hit_time = sum(no_go_hit_times) / len(no_go_hit_times) if no_go_hit_times else 0
@@ -157,15 +161,15 @@ def display_results(avg_hit_time, avg_no_go_hit_time):
         text = font.render(line, True, (255, 255, 255))
         screen.blit(text, (50, 50 + i * 40))
 
-    # Display GAME OVER in red, positioned lower
+    # Obligitory Giant Red GAME OVER screen
     font_game_over = pygame.font.Font(None, 100)
     game_over_text = font_game_over.render('GAME OVER', True, (255, 0, 0))
     game_over_rect = game_over_text.get_rect(center=(screen.get_width() / 2, screen.get_height() / 2))
     screen.blit(game_over_text, game_over_rect)
 
-    # Display Press any button to restart in white, positioned lower
+    # Display Press Enter to restart Ill try making this flash colours but last time it bricked the end screen so idk
     font_restart = pygame.font.Font(None, 36)
-    restart_text = font_restart.render('Press Any Button to Restart', True, (255, 255, 255))
+    restart_text = font_restart.render('Press Enter to Restart', True, (255, 255, 255))
     restart_rect = restart_text.get_rect(center=(screen.get_width() / 2, screen.get_height() / 2 + 150))
     screen.blit(restart_text, restart_rect)
 
@@ -178,7 +182,8 @@ def display_results(avg_hit_time, avg_no_go_hit_time):
                 pygame.quit()
                 exit()
             if event.type == pygame.KEYDOWN:
-                waiting = False  # Exit the loop to restart the program
+                if event.key == pygame.K_RETURN:
+                    waiting = False  # Exit the loop to restart the program
 
 def file_output(avg_hit_time, avg_no_go_hit_time):
     timestamp = datetime.now().strftime("%Y-%m-%d__%H-%M-%S")
