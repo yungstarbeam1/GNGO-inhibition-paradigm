@@ -200,7 +200,7 @@ def file_output(avg_hit_time, avg_no_go_hit_time):
     for name, score in content.items():
         worksheet.write(row, col, name)
         worksheet.write(row, col + 1, score)
-        row += 1
+        col += 1
 
     workbook.close()
 
