@@ -12,11 +12,13 @@ U /"___|u                  | \ |"|    U /"___|u     \/"_ \/
  (__)__)                   (_")  (_/   (__)__)       (__)   
 
 ## Purpose:
-The purpose of this test is to test the effects of an intervention on inhibition. To be done before and after an ntervention is applied to assess its effects on inhibition. Most trials are usualy 150+ Displays at a time.
+The purpose of this task is to test the effects of an intervention on inhibition.
+To be done before and after an ntervention is applied to assess its effects on inhibition.
+Most trials are usualy 150+ Displays at a time.
 
 ## Instruction:
 As for right now run the v4.py file, Make sure to review the rules guide for what to press. Current settings:
-- # of trials: Up to you
+- number of trials: Up to you
 - Display stim: 200ms
 - Intermitten Stimulus Interval (ISI): 1300ms 
 
