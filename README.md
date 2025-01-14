@@ -1,5 +1,7 @@
 
 ## G - NGO Inhibition Paradigm Task
+```markdown
+
 
    ____                     _   _        ____      U  ___ u 
 U /"___|u                  | \ |"|    U /"___|u     \/"_ \/ 
@@ -9,7 +11,6 @@ U /"___|u                  | \ |"|    U /"___|u     \/"_ \/
   _)(|_                    ||   \\,-.   _)(|_         \\    
  (__)__)                   (_")  (_/   (__)__)       (__)   
 
-```markdown
 ## Purpose:
 The purpose of this test is to test the effects of an intervention on inhibition. To be done before and after an ntervention is applied to assess its effects on inhibition. Most trials are usualy 150+ Displays at a time.
 
