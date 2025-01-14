@@ -4,7 +4,13 @@ ____ _ _ ____ U ___ u U /"|u | \ |"| U /"|u \/"_ \/ \| | _ / U u <| \| |> \| | _
 
 ```markdown
 ## Purpose:
-The purpose of this test is to test the effects of an intervention on inhibition.
+The purpose of this test is to test the effects of an intervention on inhibition. To be done before and after an ntervention is applied to assess its effects on inhibition. Most trials are usualy 150+ Displays at a time.
+
+## Instruction:
+As for right now run the v4.py file, Make sure to review the rules guide for what to press. Current settings:
+- # of trials: Up to you
+- Display stim: 200ms
+- Intermitten Stimulus Interval (ISI): 1300ms 
 
 ## Settings:
 
@@ -25,7 +31,7 @@ The purpose of this test is to test the effects of an intervention on inhibition
 - Lines: 
 
 **Number of presentations:**
-- 150
+- Enter any value
 - Lines: 
 
 **Presentation:**
