@@ -17,6 +17,14 @@ To be done before and after an ntervention is applied to assess its effects on i
 Most trials are usualy 150+ Displays at a time.
 
 ## Instruction:
+Read Rules guide before starting
+1. Press any button to start program
+2. Enter number of trials (press enter)
+3. press any button to start
+4. Press any button as quickly as possible when presented wwith a GO image
+5. Stats sheet will be saved in same folder to be viewed
+
+
 As for right now run the v4.py file, Make sure to review the rules guide for what to press. Current settings:
 - number of trials: Up to you
 - Display stim: 200ms
