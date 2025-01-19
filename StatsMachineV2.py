@@ -140,13 +140,13 @@ def write_to_sheet(output_file, f_hits, p_hits, f_times, p_times):
 
     
     #Apply header style
-    for row in range(9,12):
-        for col in range(1,4):
+    for row in range(1,4):
+        for col in range(9,12):
             worksheet.cell(row=row, column=col).style = stats_header
             
     # Apply the style to the stats box
-    for row in range(10, 12):  # Rows 10-11 correspond to stats rows in Excel
-        for col in range(2, 4):  # Columns B-C
+    for row in range(2, 4):  # Rows 1-2 correspond to stats rows in Excel
+        for col in range(10, 12):  # Columns J-K
             worksheet.cell(row=row, column=col).style = stats_style
 
     # Save the workbook
