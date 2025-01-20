@@ -2,17 +2,37 @@ import pygame, random, time, os, xlsxwriter
 from datetime import datetime
 
 pygame.init()
-screen = pygame.display.set_mode((800, 600))
+
+# Set display to windowed mode, but not fully fullscreen
+screen_width, screen_height = 800, 600  # Fixed size for window
+
+# Create a normal window with a title bar and close button
+screen = pygame.display.set_mode((screen_width, screen_height), pygame.RESIZABLE)
 pygame.display.set_caption('G-NGO Paradigm')
 
+# woah wered the mouse go !!!
+pygame.mouse.set_visible(False)
+
+
+# Define the base directory for images
 base_dir = os.path.join(os.path.dirname(__file__), 'Images')
 
-# Image set
-images = [os.path.join(base_dir, f'image{i}.jpg') for i in range(1, 9)]
-no_go_images = [
-    os.path.join(base_dir, 'image6.jpg'),
-    os.path.join(base_dir, 'image8.jpg')
-]
+# Check if the image folder exists
+if not os.path.exists(base_dir):
+    print("Images folder missing!")
+    pygame.quit()
+    exit()
+
+# Define the image paths
+images = [os.path.join(base_dir, f'image{i}.jpg') for i in range(1, 5)]
+no_go_images = [os.path.join(base_dir, 'image4.jpg')]
+
+# Check if all image files exist and error print
+missing_files = [img for img in images + no_go_images if not os.path.isfile(img)]
+if missing_files:
+    print(f"Missing image files: {missing_files}")
+    pygame.quit()
+    exit()
 
 loaded_images = {img: pygame.image.load(img) for img in images}
 
@@ -226,7 +246,7 @@ def file_output(avg_hit_time, avg_no_go_hit_time):
     workbook.close()
     print(f"Saved Results to: {os.getcwd()}")
 
-### Main Loop
+# Main loop with graceful shutdown
 try:
     while True:
         show_start_screen()
@@ -244,5 +264,9 @@ try:
         no_go_hit_times = []
 
 except SystemExit:
+    pass
+except Exception as e:
+    print(f"An unexpected error occurred: {e}")
+finally:
     pygame.quit()
-    exit()
+    print("Game closed gracefully.")
