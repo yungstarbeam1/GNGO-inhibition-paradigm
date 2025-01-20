@@ -119,8 +119,8 @@ def write_to_sheet(output_file, f_hits, p_hits, f_times, p_times):
     worksheet = workbook["Summary"]
 
     # Write the final stats to the specified rows and columns
-    for row_idx, row_data in enumerate(final_stats, start=9):  # Start at row 9
-        for col_idx, value in enumerate(row_data, start=1):  # Start at column 1 (A)
+    for row_idx, row_data in enumerate(final_stats, start=1):  # Start at row 1
+        for col_idx, value in enumerate(row_data, start=9):  # Start at column 9 
             worksheet.cell(row=row_idx, column=col_idx, value=value)
 
     # Define the stats formatting using openpyxl styles
